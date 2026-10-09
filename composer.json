@@ -1,0 +1,58 @@
+{
+    "name": "ojessecruz/resend-inbox",
+    "description": "Framework-agnostic core of a Resend-powered shared inbox: webhook parsing, conversation threading, reply headers and auto-reply detection.",
+    "keywords": [
+        "jessecruz",
+        "resend",
+        "inbox",
+        "email",
+        "inbound",
+        "threading"
+    ],
+    "homepage": "https://github.com/ojessecruz/resend-inbox",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jessecruz",
+            "email": "cruzkta@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "egulias/email-validator": "^4.0",
+        "league/commonmark": "^2.4",
+        "resend/resend-php": "^1.3",
+        "symfony/mime": "^6.4||^7.0||^8.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "mockery/mockery": "^1.6",
+        "pestphp/pest": "^3.0||^4.0",
+        "pestphp/pest-plugin-arch": "^3.0||^4.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jessecruz\\ResendInbox\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jessecruz\\ResendInbox\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
