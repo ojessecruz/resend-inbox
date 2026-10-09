@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jessecruz\ResendInbox;
 
 use DateTimeImmutable;
+use DateTimeZone;
 use Throwable;
 
 /**
@@ -148,11 +149,15 @@ final readonly class ReceivedEmail
         return $attachments;
     }
 
+    /**
+     * The timestamp in PHP's default timezone: ORMs store the wall-clock time
+     * without its offset and read it back in that timezone.
+     */
     private static function date(mixed $value): DateTimeImmutable
     {
         if (is_string($value) && $value !== '') {
             try {
-                return new DateTimeImmutable($value);
+                return (new DateTimeImmutable($value))->setTimezone(new DateTimeZone(date_default_timezone_get()));
             } catch (Throwable) {
                 // Fall through to "now" for a malformed timestamp.
             }
